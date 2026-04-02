@@ -1,0 +1,19 @@
+local Scripts = {
+    [18687417158]       = "https://raw.githubusercontent.com/mighuelfreitas40-sys/Forsaken/refs/heads/main/Forsaken",
+    [70845479499574]    = "https://raw.githubusercontent.com/mighuelfreitas40-sys/Bite-by-nigt/refs/heads/main/Bite%20by%20night",
+    [4924922222]        = "https://raw.githubusercontent.com/mighuelfreitas40-sys/Brookhaven/refs/heads/main/Brookhaven",
+    [16116270224]       = "https://raw.githubusercontent.com/mighuelfreitas40-sys/DandyWorlds/refs/heads/main/DandyWorld",
+    [10449761463]       = "https://raw.githubusercontent.com/mighuelfreitas40-sys/Strongestbattlegrounds/refs/heads/main/StrongestBattleground",
+    [15135285305]       = "https://raw.githubusercontent.com/mighuelfreitas40-sys/Gef/refs/heads/main/Gef",
+    [3851622790]        = "https://raw.githubusercontent.com/mighuelfreitas40-sys/BreakIN1/refs/heads/main/BreakIn1",
+    [13864661000]       = "https://raw.githubusercontent.com/mighuelfreitas40-sys/Breakin2/refs/heads/main/Breakin2",
+    [119987266683883]   = "https://raw.githubusercontent.com/mighuelfreitas40-sys/LavaBrainrot/refs/heads/main/LavaBrainrot",
+}
+
+local url = Scripts[game.PlaceId]
+
+if url then
+    loadstring(game:HttpGet(url))()
+else
+    warn("[Loader] Nenhum script encontrado para este jogo. PlaceId: " .. tostring(game.PlaceId))
+end
