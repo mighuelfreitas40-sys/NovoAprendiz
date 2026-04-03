@@ -1,62 +1,33 @@
-local HttpService = game:GetService("HttpService")
-local Players = game:GetService("Players")
-
--- ==========================================
--- CONFIGURAÇÃO DOS LOGS (AIRTABLE)
--- ==========================================
-local API_URL = "https://api.airtable.com/v0/appGhegu1L7NiXY7Q/Table%201"
--- COLOQUE SEU TOKEN ABAIXO (MANTENHA A PALAVRA 'Bearer ')
-local TOKEN = "patvtXdTDRWKSixJ6.06829d2fcb0eef69b7f10c91db4f548a1131312265e63c95a0af6da3ab2ea128" 
-
-local function sendLog()
-    local success, mapInfo = pcall(function()
-        return game:GetService("MarketplaceService"):GetProductInfo(game.PlaceId).Name
-    end)
-
-    local data = {
-        ["records"] = {
-            {
-                ["fields"] = {
-                    ["Player"] = Players.LocalPlayer.Name,
-                    ["mapName"] = success and mapInfo or "Desconhecido",
-                    ["PlaceId"] = tostring(game.PlaceId),
-                    ["JobId"] = game.JobId
-                }
-            }
-        }
-    }
-
-    local headers = {
-        ["Authorization"] = TOKEN,
-        ["Content-Type"] = "application/json"
-    }
-
-    pcall(function()
-        HttpService:PostAsync(API_URL, HttpService:JSONEncode(data), Enum.HttpContentType.ApplicationJson, false, headers)
-    end)
-end
-
--- ==========================================
--- SEU LOADER ORIGINAL
--- ==========================================
 local Scripts = {
-    [18687417158]       = "https://raw.githubusercontent.com/mighuelfreitas40-sys/Forsaken/refs/heads/main/Forsaken",
-    [70845479499574]    = "https://raw.githubusercontent.com/mighuelfreitas40-sys/Bite-by-nigt/refs/heads/main/Bite%20by%20night",
-    [4924922222]        = "https://raw.githubusercontent.com/mighuelfreitas40-sys/Brookhaven/refs/heads/main/Brookhaven",
-    [16116270224]       = "https://raw.githubusercontent.com/mighuelfreitas40-sys/DandyWorlds/refs/heads/main/DandyWorld",
-    [10449761463]       = "https://raw.githubusercontent.com/mighuelfreitas40-sys/Strongestbattlegrounds/refs/heads/main/StrongestBattleground",
-    [15135285305]       = "https://raw.githubusercontent.com/mighuelfreitas40-sys/Gef/refs/heads/main/Gef",
-    [119987266683883]   = "https://raw.githubusercontent.com/mighuelfreitas40-sys/LavaBrainrot/refs/heads/main/LavaBrainrot",
+
+[18687417158] = "https://raw.githubusercontent.com/mighuelfreitas40-sys/Forsaken/refs/heads/main/Forsaken",
+
+[70845479499574] = "https://raw.githubusercontent.com/mighuelfreitas40-sys/Bite-by-nigt/refs/heads/main/Bite%20by%20night",
+
+[4924922222] = "https://raw.githubusercontent.com/mighuelfreitas40-sys/Brookhaven/refs/heads/main/Brookhaven",
+
+[16116270224] = "https://raw.githubusercontent.com/mighuelfreitas40-sys/DandyWorlds/refs/heads/main/DandyWorld",
+
+[10449761463] = "https://raw.githubusercontent.com/mighuelfreitas40-sys/Strongestbattlegrounds/refs/heads/main/StrongestBattleground",
+
+[15135285305] = "https://raw.githubusercontent.com/mighuelfreitas40-sys/Gef/refs/heads/main/Gef",
+
+[119987266683883] = "https://raw.githubusercontent.com/mighuelfreitas40-sys/LavaBrainrot/refs/heads/main/LavaBrainrot",
+
 }
+
+
 
 local url = Scripts[game.PlaceId]
 
+
+
 if url then
-    -- Envia o log em paralelo para não travar o carregamento
-    task.spawn(sendLog)
-    
-    -- Carrega o script do jogo correspondente
-    loadstring(game:HttpGet(url))()
+
+loadstring(game:HttpGet(url))()
+
 else
-    warn("[Loader] Nenhum script encontrado para este jogo. PlaceId: " .. tostring(game.PlaceId))
+
+warn("[Loader] Nenhum script encontrado para este jogo. PlaceId: " .. tostring(game.PlaceId))
+
 end
